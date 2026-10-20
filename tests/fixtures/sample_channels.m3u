@@ -1,0 +1,25 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="France24.fr" tvg-name="France 24 English" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/France_24_logo.svg/512px-France_24_logo.svg.png" tvg-country="FR" tvg-language="eng" group-title="News",France 24 English
+https://static.france24.com/live/F24_EN_LO_HLS/live_tv.m3u8
+#EXTINF:-1 tvg-id="DW.de" tvg-name="DW English" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Deutsche_Welle_symbol_2012.svg/512px-Deutsche_Welle_symbol_2012.svg.png" tvg-country="DE" tvg-language="eng" group-title="News",DW English
+https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
+#EXTINF:-1 tvg-id="NASATV.us" tvg-name="NASA TV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/512px-NASA_logo.svg.png" tvg-country="US" tvg-language="eng" group-title="Science",NASA TV Public
+https://ntv1.akamaized.net/hls/live/2014075/NASA-NTV1-HLS/master.m3u8
+#EXTINF:-1 tvg-id="NHKWorld.jp" tvg-name="NHK World Japan" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/NHK_World-Japan_logo.svg/512px-NHK_World-Japan_logo.svg.png" tvg-country="JP" tvg-language="eng" group-title="News",NHK World Japan
+https://b-nhkworld.akamaized.net/hls/live/2014412/nhkworld-tv/master.m3u8
+#EXTINF:-1 tvg-id="Euronews.eu" tvg-name="Euronews English" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Euronews_2016_logo.svg/512px-Euronews_2016_logo.svg.png" tvg-country="FR" tvg-language="eng" group-title="News",Euronews English
+https://euronews-euronews-world-1-au.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 tvg-id="AlJazeera.qa" tvg-name="Al Jazeera English" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Aljazeera_eng.svg/512px-Aljazeera_eng.svg.png" tvg-country="QA" tvg-language="eng" group-title="News",Al Jazeera English
+https://live-hls-web-aje.getaj.net/AJE/01.m3u8
+#EXTINF:-1 tvg-id="RedBullTV.at" tvg-name="Red Bull TV" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png" tvg-country="AT" tvg-language="eng" group-title="Sports",Red Bull TV
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
+#EXTINF:-1 tvg-id="Bloomberg.us" tvg-name="Bloomberg Television" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Bloomberg_Television_logo.svg/512px-Bloomberg_Television_logo.svg.png" tvg-country="US" tvg-language="eng" group-title="Business",Bloomberg TV
+https://liveproductionus.akamaized.net/hls/live/700256/bptvus_live/master.m3u8
+#EXTINF:-1 tvg-id="TV5Monde.fr" tvg-name="TV5Monde Info" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/TV5MONDE_logo_2013.svg/512px-TV5MONDE_logo_2013.svg.png" tvg-country="FR" tvg-language="fra" group-title="General",TV5Monde Info
+https://ott.tv5monde.com/Content/HLS/Live/channel(info)/index.m3u8
+#EXTINF:-1 tvg-id="Arirang.kr" tvg-name="Arirang TV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Arirang_TV_logo.svg/512px-Arirang_TV_logo.svg.png" tvg-country="KR" tvg-language="eng" group-title="Culture",Arirang TV
+https://amdlive.ctnd.com.edgesuite.net/arirang_1ch/smil:arirang_1ch.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="Canal24Horas.es" tvg-name="RTVE 24 Horas" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/24h_RTVE_logo_2008.svg/512px-24h_RTVE_logo_2008.svg.png" tvg-country="ES" tvg-language="spa" group-title="News",RTVE 24h
+https://rtvelivestream.akamaized.net/rtvesec/24h/24h_main_500.m3u8
+#EXTINF:-1 tvg-id="RaiNews24.it" tvg-name="Rai News 24" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Rai_News_24_-_Logo_2010.svg/512px-Rai_News_24_-_Logo_2010.svg.png" tvg-country="IT" tvg-language="ita" group-title="News",RAI News 24
+https://rainews1-live.akamaized.net/hls/live/598326/rainews1/rainews1/playlist.m3u8

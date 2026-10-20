@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover, search, filter, and watch legal, publicly available global live TV streams.">
+    <title>{% block title %}Global Live TV Platform{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Application CSS (Direct file preview + Flask url_for) -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="dark-theme">
+    <header class="app-header" id="appHeader">
+        <div class="header-container">
+            <a href="{{ url_for('main.index') }}" class="brand-link" id="brandLink">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                        <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">Global Live TV</span>
+                    <span class="brand-badge">PRO</span>
+                </div>
+            </a>
+            
+            <nav class="main-nav" id="mainNav">
+                <a href="{{ url_for('main.index') }}" class="nav-link active" id="navHome">Directory</a>
+                <a href="{{ url_for('main.about') }}" class="nav-link" id="navAbout">Ethics & Sources</a>
+                <div class="health-pill" id="systemHealthBadge" title="Backend Status">
+                    <span class="status-dot healthy"></span>
+                    <span class="status-label">Operational</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-main" id="mainContent">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="app-footer" id="appFooter">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p class="footer-title">Global Live TV Platform</p>
+                <p class="footer-sub">
+                    Direct browser playback of publicly available and legal broadcasts. Stream availability depends entirely on external broadcaster servers.
+                </p>
+            </div>
+            <div class="footer-meta">
+                <span class="badge-tag">Zero Proxy Architecture</span>
+                <span class="badge-tag">Open Metadata Source</span>
+                <span class="badge-tag">HLS Native & MSE</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') if url_for is defined else '../static/js/main.js' }}?v=1.0.1"></script>
+    {% block extra_js %}{% endblock %}
+
+</body>
+
+</html>

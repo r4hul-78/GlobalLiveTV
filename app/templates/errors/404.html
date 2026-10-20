@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - 404{% endblock %}
+
+{% block content %}
+<div class="error-container" id="error404">
+    <div class="error-badge">Error 404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-description">
+        The requested page does not exist or has been moved to a different channel frequency.
+    </p>
+    <div class="error-actions">
+        <a href="{{ url_for('main.index') }}" class="btn btn-primary" id="btn404Home">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
