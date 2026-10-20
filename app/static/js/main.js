@@ -5,13 +5,80 @@
  * Step 6: Direct Browser HLS Video Player
  */
 
-document.addEventListener("DOMContentLoaded", () => {
+function bootstrapApp() {
+    initThemeToggle();
     initNavigationLinks();
     initHealthMonitoring();
     const reportController = initIssueReporting();
     const playerController = initHlsPlayer(reportController);
     initChannelDiscovery(playerController, reportController);
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootstrapApp);
+} else {
+    bootstrapApp();
+}
+
+/**
+ * Professional Broadcast Theme Controller
+ * Manages dark / light themes, OS preference detection, and persistent selection in localStorage.
+ */
+function initThemeToggle() {
+    const themeBtn = document.getElementById("themeToggleBtn");
+    const STORAGE_KEY = "gltv_theme";
+
+    function getPreferredTheme() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved === "light" || saved === "dark") return saved;
+        } catch (e) {}
+        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+            return "light";
+        }
+        return "dark";
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        document.body.classList.remove("dark-theme", "light-theme");
+        document.body.classList.add(theme + "-theme");
+
+        if (themeBtn) {
+            const isDark = theme === "dark";
+            themeBtn.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+            themeBtn.setAttribute("title", isDark ? "Switch to light theme" : "Switch to dark theme");
+        }
+
+        window.dispatchEvent(new CustomEvent("theme:changed", { detail: { theme } }));
+    }
+
+    const currentTheme = getPreferredTheme();
+    applyTheme(currentTheme);
+
+    if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+            const active = document.documentElement.getAttribute("data-theme") || "dark";
+            const next = active === "dark" ? "light" : "dark";
+            try {
+                localStorage.setItem(STORAGE_KEY, next);
+            } catch (e) {}
+            applyTheme(next);
+            announceToScreenReader(`Switched to ${next} theme`);
+        });
+    }
+
+    if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+            try {
+                if (!localStorage.getItem(STORAGE_KEY)) {
+                    applyTheme(e.matches ? "light" : "dark");
+                }
+            } catch (err) {}
+        });
+    }
+}
+
 
 /**
  * Resolve API base URL based on the current viewing context.
@@ -38,7 +105,7 @@ var apiClient = window.apiClient = window.apiClient || {
         });
 
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), options.timeout || 8000);
+        const timeoutId = setTimeout(() => controller.abort(), options.timeout || 12000);
 
         try {
             const res = await fetch(url.toString(), {
@@ -229,13 +296,9 @@ function renderInitialsFallback(container, name) {
     if (!container) return;
     container.innerHTML = "";
     const fallback = document.createElement("div");
-    fallback.className = "channel-logo-fallback";
-    const initials = (name || "TV")
-        .split(" ")
-        .filter(Boolean)
-        .slice(0, 2)
-        .map(w => w[0].toUpperCase())
-        .join("");
+    fallback.className = "initials-fallback channel-logo-fallback";
+    const words = (name || "TV").trim().split(/\s+/);
+    const initials = words.length > 1 ? (words[0][0] + words[1][0]).toUpperCase() : words[0].slice(0, 2).toUpperCase();
     fallback.textContent = initials || "TV";
     container.appendChild(fallback);
 }
@@ -699,6 +762,43 @@ function initChannelDiscovery(playerController, reportController) {
                 window.history.replaceState({ ...state, channel: activePlayingChannelId }, "", newUrl);
             }
         }
+
+        updatePageMetadata();
+    }
+
+    /**
+     * Dynamically update page title and meta tags to reflect active Country, Genre, and Language filters.
+     */
+    function updatePageMetadata() {
+        const filters = window._cachedFilterMetadata || {};
+        const titleParts = [];
+
+        if (state.genre) {
+            const g = (filters.genres || []).find(x => x.slug === state.genre);
+            titleParts.push(g ? g.name : state.genre.charAt(0).toUpperCase() + state.genre.slice(1));
+        }
+        if (state.language) {
+            const l = (filters.languages || []).find(x => x.code === state.language);
+            titleParts.push(`${l ? l.name : state.language.toUpperCase()} Channels`);
+        }
+        if (state.country) {
+            const c = (filters.countries || []).find(x => x.code === state.country);
+            titleParts.push(`in ${c ? c.name : state.country}`);
+        }
+        if (state.q) {
+            titleParts.push(`matching "${state.q}"`);
+        }
+
+        if (titleParts.length > 0) {
+            document.title = `${titleParts.join(" ")} — Global Live TV Platform`;
+        } else {
+            document.title = "Global Live TV Platform - Discover Live Television";
+        }
+
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && titleParts.length > 0) {
+            metaDesc.setAttribute("content", `Watch live ${titleParts.join(" ")} online. Verified, legal free-to-air public broadcasts streaming directly in browser.`);
+        }
     }
 
     // Synchronize player lifecycle events with URL state
@@ -752,6 +852,11 @@ function initChannelDiscovery(playerController, reportController) {
             }
         }
 
+        fetchChannels();
+    });
+
+    // Refresh channel directory when automated health checks update stream statuses
+    window.addEventListener("catalog:health-updated", () => {
         fetchChannels();
     });
 
@@ -835,7 +940,9 @@ function initChannelDiscovery(playerController, reportController) {
                 if (state.language) filterLanguage.value = state.language;
             }
 
+            window._cachedFilterMetadata = data;
             state.filtersLoaded = true;
+            updatePageMetadata();
         } catch (err) {
             console.warn("Could not load dynamic filter options:", err);
         }
@@ -951,6 +1058,17 @@ function initChannelDiscovery(playerController, reportController) {
             card.setAttribute("role", "button");
             card.setAttribute("aria-label", `Watch ${channel.name} live stream`);
 
+            // Tag card with taxonomy attributes for DOM indexing, automated inspection and a11y
+            if (channel.country && channel.country.code) {
+                card.setAttribute("data-country", channel.country.code);
+            }
+            if (Array.isArray(channel.genres) && channel.genres.length > 0) {
+                card.setAttribute("data-genres", channel.genres.map(g => g.slug).join(","));
+            }
+            if (Array.isArray(channel.languages) && channel.languages.length > 0) {
+                card.setAttribute("data-languages", channel.languages.map(l => l.code).join(","));
+            }
+
             // Top Row: Logo & Health Status
             const topRow = document.createElement("div");
             topRow.className = "channel-card-top";
@@ -1004,9 +1122,13 @@ function initChannelDiscovery(playerController, reportController) {
 
             // Language Pill (if present)
             if (Array.isArray(channel.languages) && channel.languages.length > 0) {
+                const lang = channel.languages[0];
                 const langPill = document.createElement("span");
                 langPill.className = "lang-pill";
-                langPill.textContent = channel.languages[0].code;
+                const langCode = (lang.code || "").toUpperCase();
+                const langName = lang.name || langCode;
+                langPill.textContent = langCode;
+                langPill.title = `Language: ${langName}`;
                 metaRow.appendChild(langPill);
             }
 
@@ -1104,9 +1226,10 @@ function initChannelDiscovery(playerController, reportController) {
     function renderInitialsFallback(container, channelName) {
         container.innerHTML = "";
         const fallback = document.createElement("div");
-        fallback.className = "channel-logo-fallback";
-        const initial = (channelName || "TV").trim().charAt(0).toUpperCase();
-        fallback.textContent = initial;
+        fallback.className = "initials-fallback channel-logo-fallback";
+        const words = (channelName || "TV").trim().split(/\s+/);
+        const initials = words.length > 1 ? (words[0][0] + words[1][0]).toUpperCase() : words[0].slice(0, 2).toUpperCase();
+        fallback.textContent = initials || "TV";
         container.appendChild(fallback);
     }
 
@@ -1364,6 +1487,33 @@ function initChannelDiscovery(playerController, reportController) {
                     }
                 };
                 modalMetaRow.appendChild(watchBtn);
+
+                // Add on-demand "Probe Stream" button in Details modal
+                const probeBtn = document.createElement("button");
+                probeBtn.type = "button";
+                probeBtn.className = "btn-card-action";
+                probeBtn.id = "btnProbeChannelModal";
+                probeBtn.style.padding = "0.3rem 0.85rem";
+                probeBtn.style.marginLeft = "0.4rem";
+                probeBtn.innerHTML = `<span>⟳ Probe Stream</span>`;
+                probeBtn.onclick = async () => {
+                    probeBtn.disabled = true;
+                    probeBtn.innerHTML = `<span>Probing...</span>`;
+                    try {
+                        const probeRes = await apiClient.post(`/api/channels/${ch.id}/check`);
+                        if (probeRes && probeRes.channel) {
+                            openChannelModal(ch.id);
+                            window.dispatchEvent(new CustomEvent("catalog:health-updated"));
+                        }
+                    } catch (probeErr) {
+                        probeBtn.innerHTML = `<span>Probe Failed</span>`;
+                        setTimeout(() => {
+                            probeBtn.disabled = false;
+                            probeBtn.innerHTML = `<span>⟳ Probe Stream</span>`;
+                        }, 2000);
+                    }
+                };
+                modalMetaRow.appendChild(probeBtn);
             }
 
             // Stream URL
@@ -1683,31 +1833,140 @@ function initHealthMonitoring() {
     const refreshBtn = document.getElementById("btnRefreshHealth");
     const healthBadge = document.getElementById("systemHealthBadge");
 
-    async function checkHealth() {
-        if (diagnosticOutput) {
-            diagnosticOutput.textContent = "Querying /api/health endpoint...";
+    let isPolling = false;
+    let pollInterval = null;
+
+    function updateHealthBadge(data) {
+        if (!healthBadge) return;
+        const dot = healthBadge.querySelector(".status-dot");
+        const label = healthBadge.querySelector(".status-label");
+        if (!dot || !label) return;
+
+        const isHealthy = data.status === "healthy" || data.status === "completed" || 
+            (data.catalog_summary && data.catalog_summary.healthy > 0);
+        dot.className = "status-dot " + (isHealthy ? "healthy" : "degraded");
+        label.textContent = isHealthy ? "Operational" : "Degraded";
+    }
+
+    async function pollJobStatus(targetBatchSize = 50, maxAttempts = 25) {
+        if (isPolling) return;
+        isPolling = true;
+        let attempts = 0;
+
+        if (pollInterval) clearInterval(pollInterval);
+
+        pollInterval = setInterval(async () => {
+            attempts++;
+            try {
+                const statusData = await apiClient.get("/api/health-check/status", {}, { timeout: 4000 });
+                const latestRun = statusData.latest_run;
+
+                if (!latestRun || latestRun.status === "completed" || latestRun.status === "failed" || attempts >= maxAttempts) {
+                    clearInterval(pollInterval);
+                    pollInterval = null;
+                    isPolling = false;
+
+                    if (refreshBtn) {
+                        refreshBtn.disabled = false;
+                        refreshBtn.textContent = "Check Health";
+                    }
+
+                    if (diagnosticOutput) {
+                        diagnosticOutput.textContent = JSON.stringify(statusData, null, 2);
+                    }
+
+                    updateHealthBadge(statusData);
+                    window.dispatchEvent(new CustomEvent("catalog:health-updated"));
+                    announceToScreenReader("Automated stream health check run completed");
+                    return;
+                }
+
+                // Still running in background
+                if (diagnosticOutput && latestRun) {
+                    diagnosticOutput.textContent = `Probing stream batch in background (Job #${latestRun.id})...\nStatus: ${latestRun.status}\nElapsed: ${Math.round(latestRun.duration_seconds || attempts * 1.5)}s\nCatalog: ${statusData.catalog_summary ? statusData.catalog_summary.total_active_channels : 0} channels\n\nSite remains 100% interactive during probing.`;
+                }
+            } catch (err) {
+                if (attempts >= maxAttempts) {
+                    clearInterval(pollInterval);
+                    pollInterval = null;
+                    isPolling = false;
+                    if (refreshBtn) {
+                        refreshBtn.disabled = false;
+                        refreshBtn.textContent = "Check Health";
+                    }
+                }
+            }
+        }, 1500);
+    }
+
+    async function checkHealth(triggerRun = false) {
+        if (triggerRun) {
+            if (isPolling) return;
+
+            if (diagnosticOutput) {
+                diagnosticOutput.textContent = "Dispatching non-blocking background stream health inspection...";
+            }
+
+            if (refreshBtn) {
+                refreshBtn.disabled = true;
+                refreshBtn.textContent = "Probing Streams...";
+            }
+
+            try {
+                // Trigger batch health check run asynchronously without blocking web requests
+                const runRes = await apiClient.post(
+                    "/api/health-check/run", 
+                    { limit: 50, concurrency: 10, async: true }, 
+                    { timeout: 8000 }
+                );
+
+                if (diagnosticOutput) {
+                    diagnosticOutput.textContent = `Background health check job dispatched:\n${JSON.stringify(runRes, null, 2)}\n\nPolling status in background...`;
+                }
+
+                // Begin non-blocking status polling
+                pollJobStatus(50);
+
+            } catch (err) {
+                if (err.status === 409) {
+                    if (diagnosticOutput) {
+                        diagnosticOutput.textContent = "A stream health check run is already actively running in the background. Polling existing job...";
+                    }
+                    pollJobStatus(50);
+                } else {
+                    if (refreshBtn) {
+                        refreshBtn.disabled = false;
+                        refreshBtn.textContent = "Check Health";
+                    }
+                    if (diagnosticOutput) {
+                        diagnosticOutput.textContent = `Failed to trigger health check: ${err.message}`;
+                    }
+                }
+            }
+            return;
         }
 
-        if (refreshBtn) {
-            refreshBtn.disabled = true;
-            refreshBtn.textContent = "Checking...";
-        }
-
+        // Routine fast status query on page load (instant GET)
         try {
-            const data = await apiClient.get("/api/health", {}, { timeout: 4000 });
+            let data;
+            try {
+                data = await apiClient.get("/api/health-check/status", {}, { timeout: 6000 });
+            } catch {
+                data = await apiClient.get("/api/health", {}, { timeout: 4000 });
+            }
 
             if (diagnosticOutput) {
                 diagnosticOutput.textContent = JSON.stringify(data, null, 2);
             }
+            updateHealthBadge(data);
 
-            if (healthBadge) {
-                const dot = healthBadge.querySelector(".status-dot");
-                const label = healthBadge.querySelector(".status-label");
-                if (dot && label) {
-                    const isHealthy = data.status === "healthy";
-                    dot.className = "status-dot " + (isHealthy ? "healthy" : "degraded");
-                    label.textContent = isHealthy ? "Operational" : "Degraded";
+            // If a background run was already in progress when the page opened, auto-resume polling
+            if (data && data.latest_run && data.latest_run.status === "running") {
+                if (refreshBtn) {
+                    refreshBtn.disabled = true;
+                    refreshBtn.textContent = "Probing Streams...";
                 }
+                pollJobStatus(50);
             }
         } catch (error) {
             const isFile = window.location.protocol === "file:";
@@ -1715,10 +1974,7 @@ function initHealthMonitoring() {
                 ? `{\n  "status": "preview_mode",\n  "environment": "Local File Preview",\n  "backend_url": "${getApiBaseUrl()}/api/health",\n  "note": "To connect live backend, ensure Flask is running via: python run.py",\n  "error": "${error.message}"\n}`
                 : `{\n  "status": "unavailable",\n  "error": "Failed to connect to health endpoint: ${error.message}"\n}`;
 
-            if (diagnosticOutput) {
-                diagnosticOutput.textContent = fallbackMessage;
-            }
-
+            if (diagnosticOutput) diagnosticOutput.textContent = fallbackMessage;
             if (healthBadge) {
                 const dot = healthBadge.querySelector(".status-dot");
                 const label = healthBadge.querySelector(".status-label");
@@ -1727,20 +1983,15 @@ function initHealthMonitoring() {
                     label.textContent = isFile ? "Local Preview" : "Offline";
                 }
             }
-        } finally {
-            if (refreshBtn) {
-                refreshBtn.disabled = false;
-                refreshBtn.textContent = "Check Health";
-            }
         }
     }
 
     if (refreshBtn) {
         refreshBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            checkHealth();
+            checkHealth(true);
         });
     }
 
-    checkHealth();
+    checkHealth(false);
 }

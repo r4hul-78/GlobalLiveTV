@@ -159,6 +159,12 @@ def parse_m3u_content(content: str, source_type: str = "general") -> List[M3UCha
             group_title = current_extgrp or attrs.get("group-title")
 
             country_code = attrs.get("tvg-country")
+            if not country_code and external_id:
+                c_m = re.search(r'\.([a-z]{2})(?:@[a-zA-Z0-9]+)?$', external_id)
+                if c_m:
+                    extracted = c_m.group(1).upper()
+                    country_code = "GB" if extracted == "UK" else extracted
+
             country_name = None
             language_code = attrs.get("tvg-language")
             genres = []

@@ -84,6 +84,20 @@ def is_safe_url(url: str, resolve_dns: bool = True) -> Tuple[bool, str]:
                 ip_str = sockaddr[0]
                 resolved_ip = ipaddress.ip_address(ip_str)
 
+                # Check for RFC 6052 Well-Known NAT64 Prefix (64:ff9b::/96)
+                if resolved_ip.version == 6 and resolved_ip in ipaddress.ip_network("64:ff9b::/96"):
+                    embedded_ipv4 = ipaddress.IPv4Address(resolved_ip.packed[-4:])
+                    if (
+                        embedded_ipv4.is_loopback
+                        or embedded_ipv4.is_private
+                        or embedded_ipv4.is_link_local
+                        or embedded_ipv4.is_multicast
+                        or embedded_ipv4.is_reserved
+                        or embedded_ipv4.is_unspecified
+                    ):
+                        return False, f"Resolved NAT64 IP '{resolved_ip}' embeds prohibited IPv4 '{embedded_ipv4}'"
+                    continue
+
                 if (
                     resolved_ip.is_loopback
                     or resolved_ip.is_private

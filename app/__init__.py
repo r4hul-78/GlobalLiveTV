@@ -110,5 +110,11 @@ def create_app(config_name=None):
     # Register error handlers
     register_error_handlers(app)
 
+    # Start automated health check scheduler if enabled
+    if app.config.get("AUTO_HEALTH_CHECK_ENABLED") and not app.config.get("TESTING"):
+        from app.services.scheduler_service import start_health_check_scheduler
+        start_health_check_scheduler(app)
+        app.logger.info("Automated stream health scheduler started.")
+
     app.logger.info("Application initialized successfully in %s mode", config_class.__name__)
     return app

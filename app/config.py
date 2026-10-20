@@ -60,9 +60,14 @@ class Config:
     )
     
     # Stream Health Checking
-    HEALTH_CHECK_TIMEOUT_SECONDS = int(os.getenv("HEALTH_CHECK_TIMEOUT_SECONDS", "5"))
-    HEALTH_CHECK_CONCURRENCY = int(os.getenv("HEALTH_CHECK_CONCURRENCY", "5"))
+    HEALTH_CHECK_TIMEOUT_SECONDS = int(os.getenv("HEALTH_CHECK_TIMEOUT_SECONDS", "3"))
+    HEALTH_CHECK_CONCURRENCY = int(os.getenv("HEALTH_CHECK_CONCURRENCY", "10"))
     HEALTH_CHECK_MAX_FAILURES = int(os.getenv("HEALTH_CHECK_MAX_FAILURES", "3"))
+
+    # Automated Health Checking Scheduler
+    AUTO_HEALTH_CHECK_ENABLED = os.getenv("AUTO_HEALTH_CHECK_ENABLED", "false").lower() in ("true", "1", "yes")
+    AUTO_HEALTH_CHECK_INTERVAL_SECONDS = int(os.getenv("AUTO_HEALTH_CHECK_INTERVAL_SECONDS", "3600"))
+    AUTO_HEALTH_CHECK_BATCH_SIZE = int(os.getenv("AUTO_HEALTH_CHECK_BATCH_SIZE", "50"))
 
     # Performance, Caching & Concurrency Locks
     FILTER_CACHE_TTL_SECONDS = int(os.getenv("FILTER_CACHE_TTL_SECONDS", "300"))
@@ -84,6 +89,7 @@ class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
     LOG_LEVEL = "WARNING"
+    AUTO_HEALTH_CHECK_ENABLED = False
 
 
 class ProductionConfig(Config):

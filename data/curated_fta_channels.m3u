@@ -1,0 +1,115 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="3CatInfo.es@SD" tvg-name="3CatInfo" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/3CatInfo_logo.svg/960px-3CatInfo_logo.svg.png" tvg-country="ES" tvg-language="cat" group-title="News",3CatInfo
+https://directes-tv-int.3catdirectes.cat/live-origin/canal324-hls/master.m3u8
+#EXTINF:-1 tvg-id="4SiDESTV.in@SD" tvg-name="4 SiDES TV" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/4sites.png" tvg-country="IN" tvg-language="eng" group-title="News",4 SiDES TV
+https://stream.ottlive.co.in/4sidestv/index.m3u8
+#EXTINF:-1 tvg-id="4TVNews.in@SD" tvg-name="4TV News" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/4_TV.png" tvg-country="IN" tvg-language="tel" group-title="News",4TV News
+https://cdn.pishow.tv/ott/live/1007/master.m3u8
+#EXTINF:-1 tvg-id="6TVTelugu.in@SD" tvg-name="6 TV Telugu" tvg-logo="https://i.imgur.com/l3EcRnZ.png" tvg-country="IN" tvg-language="tel" group-title="News",6 TV Telugu
+https://yuppparoriglin.akamaized.net/181224/smil:6tv.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
+#EXTINF:-1 tvg-id="30ALoomeredTV.us@SD" tvg-name="30A Loomered TV" tvg-logo="https://cbs12.com/resources/media/0c1ecad8-fb09-4bb2-beaa-fc561dfe624a-small21x9_LoomerStill.jpg?1603419052801" tvg-country="US" tvg-language="eng" group-title="Documentary",30A Loomered TV
+https://30a-tv.com/loomer.m3u8
+#EXTINF:-1 tvg-id="365daysTV.ru@SD" tvg-name="365 days TV" tvg-logo="https://i.imgur.com/NfnAiTR.png" tvg-country="RU" tvg-language="rus" group-title="Documentary",365 days TV
+http://stream.mcquack.net/70/index.m3u8
+#EXTINF:-1 tvg-id="AdventureEarth.de@SD" tvg-name="Adventure Earth" tvg-logo="https://d3b6luslimvglo.cloudfront.net/images/79/rlaxximages/channels-rescaled/icon-white/adventureearth_white.png" tvg-country="DE" tvg-language="eng" group-title="Documentary",Adventure Earth
+https://a57e9c69976649b582a8d7604c00e69a.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RlaxxTV-eu_AdventureEarth/playlist.m3u8
+#EXTINF:-1 tvg-id="AlArabiyaPrograms.ae@SD" tvg-name="Al Arabiya Programs" tvg-logo="https://i.imgur.com/Hoc3cfO.png" tvg-country="AE" tvg-language="ara" group-title="Documentary",Al Arabiya Programs
+https://live.alarabiya.net/alarabiapublish/aaprograms.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="scifi.ru@SD" tvg-name=".sci-fi" tvg-logo="https://i.imgur.com/nSSUHcg.png" tvg-country="RU" tvg-language="rus" group-title="Science",.sci-fi
+http://stream.mcquack.net/180/index.m3u8
+#EXTINF:-1 tvg-id="CanThoTV2.vn@SD" tvg-name="Can Tho TV 2" tvg-logo="https://i.ibb.co/JjVvkMsf/cantho2-2025.png" tvg-country="VN" tvg-language="vie" group-title="Science",Can Tho TV 2
+https://live.canthotv.vn/cs2/live.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="DiscoveryScienceLatinAmerica.us@SD" tvg-name="Discovery Science Latin America" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Discovery_science_new_logo_2017.png/960px-Discovery_science_new_logo_2017.png" tvg-country="US" tvg-language="spa" group-title="Science",Discovery Science Latin America
+http://45.171.64.30:6060/play/a007/index.m3u8
+#EXTINF:-1 tvg-id="EkoTV.ua@SD" tvg-name="Eko TV" tvg-logo="https://i.imgur.com/WovATGb.png" tvg-country="UA" tvg-language="ukr" group-title="Science",Eko TV
+https://ext.cdn.nashnet.tv/228.0.1.60/index.m3u8
+#EXTINF:-1 tvg-id="3ABNPraiseHimMusicNetwork.us@SD" tvg-name="3ABN Praise Him Music Network" tvg-logo="https://i.imgur.com/iBcqT8L.png" tvg-country="US" tvg-language="eng" group-title="Music",3ABN Praise Him Music Network
+https://3abn.bozztv.com/3abn1/PraiseHim/smil:PraiseHim.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="4everMusic.ua@SD" tvg-name="4ever Music" tvg-logo="https://i.imgur.com/UJ5oaeU.png" tvg-country="UA" tvg-language="ukr" group-title="Music",4ever Music
+http://stream.mcquack.net/257/index.m3u8
+#EXTINF:-1 tvg-id="4FunDance.pl@SD" tvg-name="4 Fun Dance" tvg-logo="https://i.imgur.com/ZEWHe1B.png" tvg-country="PL" tvg-language="pol" group-title="Music",4 Fun Dance
+http://92.114.85.87:8018/play/a00k/index.m3u8
+#EXTINF:-1 tvg-id="4FunTV.pl@SD" tvg-name="4 Fun TV" tvg-logo="https://i.imgur.com/rI1wo2l.png" tvg-country="PL" tvg-language="pol" group-title="Music",4 Fun TV
+https://stream.4fun.tv:8888/sd/4fun_sd_high.m3u8
+#EXTINF:-1 tvg-id="3CatPlatsbruts.es@SD" tvg-name="3Cat Plats bruts" tvg-logo="https://i.imgur.com/49ZENis.png" tvg-country="ES" tvg-language="cat" group-title="Classic",3Cat Plats bruts
+https://fast-tailor.3catdirectes.cat/v1/channel/ccma-channel2/hls.m3u8
+#EXTINF:-1 tvg-id="ARTFLIXMovieClassics.us@SD" tvg-name="ARTFLIX Movie Classics" tvg-logo="https://i.imgur.com/5pOZQB4.png" tvg-country="US" tvg-language="eng" group-title="Classic",ARTFLIX Movie Classics
+https://amogonetworx-artflix-1-nl.samsung.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="BollywoodFilm.ro@SD" tvg-name="Bollywood Film" tvg-logo="https://i.imgur.com/bEMUpHZ.png" tvg-country="RO" tvg-language="hin" group-title="Classic",Bollywood Film
+https://tvextra-hls.b-cdn.net/bollywoodfilm/bollywoodfilm.m3u8
+#EXTINF:-1 tvg-id="BRIDGEClassic.ru@SD" tvg-name="BRIDGE Classic" tvg-logo="https://i.imgur.com/JJTQq81.png" tvg-country="RU" tvg-language="rus" group-title="Classic",BRIDGE Classic
+http://stream.mcquack.net/272/index.m3u8
+#EXTINF:-1 tvg-id="4everCinema.ua@SD" tvg-name="4ever Cinema" tvg-logo="https://i.imgur.com/vFOgVbG.png" tvg-country="UA" tvg-language="ukr" group-title="Movies",4ever Cinema
+http://stream.mcquack.net/258/index.m3u8
+#EXTINF:-1 tvg-id="24HourFreeMovies.us@SD" tvg-name="24 Hour Free Movies" tvg-logo="https://i.imgur.com/iSVnzR1.png" tvg-country="US" tvg-language="eng" group-title="Movies",24 Hour Free Movies
+https://d1j2u714xk898n.cloudfront.net/scheduler/scheduleMaster/145.m3u8
+#EXTINF:-1 tvg-id="30ATVClassicMovies.us@SD" tvg-name="30A TV Classic Movies" tvg-country="US" tvg-language="eng" group-title="Movies",30A TV Classic Movies
+https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8
+#EXTINF:-1 tvg-id="312Kino.kg@SD" tvg-name="312 Kino" tvg-logo="https://i.ibb.co/3m9LrLj/k7gIibH.png" tvg-country="KG" tvg-language="rus" group-title="Movies",312 Kino
+http://176.126.166.43:1935/live/312kino/playlist.m3u8
+#EXTINF:-1 tvg-id="30AGolfKingdom.us@SD" tvg-name="30A Golf Kingdom" tvg-logo="https://i.imgur.com/Lv53nh4.png" tvg-country="US" tvg-language="eng" group-title="Sports",30A Golf Kingdom
+https://30a-tv.com/feeds/vidaa/golf.m3u8
+#EXTINF:-1 tvg-id="ASpor.tr@SD" tvg-name="A Spor SD" tvg-logo="https://i.imgur.com/ZhkZzLf.png" tvg-country="TR" tvg-language="tur" group-title="Sports",A Spor SD
+https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/aspor/aspor.m3u8
+#EXTINF:-1 tvg-id="ACCDigitalNetwork.us@SD" tvg-name="ACC Digital Network" tvg-logo="https://i.imgur.com/V6Kaqha.png" tvg-country="US" tvg-language="eng" group-title="Sports",ACC Digital Network
+https://raycom-accdn-firetv.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="ACCNetwork.us@SD" tvg-name="ACC Network" tvg-logo="https://i.imgur.com/TpCkbkT.png" tvg-country="US" tvg-language="eng" group-title="Sports",ACC Network
+http://23.239.31.26:8989/accnetwork/index.m3u8
+#EXTINF:-1 tvg-id="ADNTVPlus.fr@SD" tvg-name="ADN TV+" tvg-logo="https://i.imgur.com/HQZQyWt.png" tvg-country="FR" tvg-language="fra" group-title="Animation",ADN TV+
+https://d3b73b34o7cvkq.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-gz2sgqzp076kf/adn.m3u8
+#EXTINF:-1 tvg-id="AniplusAsia.sg@SD" tvg-name="Aniplus Asia" tvg-logo="https://i.imgur.com/Im3MePy.png" tvg-country="SG" tvg-language="eng" group-title="Animation",Aniplus Asia
+https://amg18481-amg18481c1-amgplt0352.playout.now3.amagi.tv/playlist/amg18481-amg18481c1-amgplt0352/playlist.m3u8
+#EXTINF:-1 tvg-id="CartoonClassics.pl@FAST" tvg-name="Cartoon Classics" tvg-logo="https://images-3.rakuten.tv/storage/global-live-channel/translation/artwork/3227c06e-333b-4b1b-b657-3e3ab99ebd06-width200-quality90.jpeg" tvg-country="PL" tvg-language="eng" group-title="Animation",Cartoon Classics
+https://daiconnect.com/live/hls/tvup/rk-cartoonclassics/578f4b7eb725168349ec0af81b21d388/index.m3u8
+#EXTINF:-1 tvg-id="CartoonNetworkAsia.sg@SD" tvg-name="Cartoon Network Asia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cartoon_Network_2010_logo.svg/960px-Cartoon_Network_2010_logo.svg.png" tvg-country="SG" tvg-language="eng" group-title="Animation",Cartoon Network Asia
+https://cdn4.skygo.mn/live/disk1/Cartoon_Network/HLSv3-FTA/Cartoon_Network.m3u8
+#EXTINF:-1 tvg-id="3ABNKids.us@SD" tvg-name="3ABN Kids" tvg-logo="https://i.imgur.com/z3npqO1.png" tvg-country="US" tvg-language="eng" group-title="Kids",3ABN Kids
+https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="ADOTV.bj@SD" tvg-name="ADO TV" tvg-logo="https://i.imgur.com/pxFamLr.png" tvg-country="BJ" tvg-language="fra" group-title="Kids",ADO TV
+https://strhls.streamakaci.tv/ortb/ortb2-multi/playlist.m3u8
+#EXTINF:-1 tvg-id="AfarinBaxcha.iq@SD" tvg-name="Afarin Baxcha" tvg-logo="https://i.postimg.cc/4xRkBDRx/Afarin-Baxcha-200.png" tvg-country="IQ" tvg-language="kur" group-title="Kids",Afarin Baxcha
+https://5dcabf026b188.streamlock.net/afarinTV/livestream/playlist.m3u8
+#EXTINF:-1 tvg-id="AfarinTV.iq@SD" tvg-name="Afarin TV [Not 24/7]" tvg-logo="https://i.imgur.com/6MnXD7g.png" tvg-country="IQ" tvg-language="kur" group-title="Kids",Afarin TV [Not 24/7]
+https://65f16f0fdfc51.streamlock.net/afarinTV/livestream/playlist.m3u8
+#EXTINF:-1 tvg-id="3CatCameresdeltemps.es@SD" tvg-name="3Cat Cameres del temps" tvg-logo="https://i.imgur.com/zXy2kbe.png" tvg-country="ES" tvg-language="cat" group-title="Weather",3Cat Cameres del temps
+https://directes-tv-int.3catdirectes.cat/live-content/beauties-hls/master.m3u8
+#EXTINF:-1 tvg-id="AccuWeatherNOW.us@SD" tvg-name="AccuWeather NOW" tvg-logo="https://i.imgur.com/M8wbVYK.png" tvg-country="US" tvg-language="eng" group-title="Weather",AccuWeather NOW
+https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8
+#EXTINF:-1 tvg-id="FoxWeather.us@SD" tvg-name="Fox Weather" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Fox_Weather_logo.svg/960px-Fox_Weather_logo.svg.png" tvg-country="US" tvg-language="eng" group-title="Weather",Fox Weather
+https://247wlive.foxweather.com/stream/index.m3u8
+#EXTINF:-1 tvg-id="Meteonews.ch@SD" tvg-name="Meteonews" tvg-logo="https://i.imgur.com/YtYhbJD.png" tvg-country="CH" tvg-language="fra" group-title="Weather",Meteonews
+https://streaming.meteonews.net/hls/stream.m3u8
+#EXTINF:-1 tvg-id="AbaiTV.kz@SD" tvg-name="Abai TV" tvg-logo="https://i.imgur.com/Nw2R7Dq.png" tvg-country="KZ" tvg-language="kaz" group-title="Culture",Abai TV
+https://abaitv-stream.qazcdn.com/abaitv/abaitv/playlist.m3u8
+#EXTINF:-1 tvg-id="AfrocultureTV.ci@SD" tvg-name="Afroculture TV" tvg-logo="https://i.imgur.com/bjaZ3kO.png" tvg-country="CI" tvg-language="fra" group-title="Culture",Afroculture TV
+https://streamtv.cmediahosthosting.net:3836/live/myafroculturelive.m3u8
+#EXTINF:-1 tvg-id="AndyHaryana.in@SD" tvg-name="Andy Haryana" tvg-logo="https://i.imgur.com/rmCBD3e.png" tvg-country="IN" tvg-language="hin" group-title="Culture",Andy Haryana
+https://mumt03.tangotv.in/Dsly5z3HANDYHARYANA/index.m3u8
+#EXTINF:-1 tvg-id="apartTV.lu@SD" tvg-name="apart TV" tvg-logo="https://i.imgur.com/IBcMIcZ.png" tvg-country="LU" tvg-language="fra" group-title="Culture",apart TV
+https://2-fss-2.streamhoster.com/pl_124/206820-4338160-1/playlist.m3u8
+#EXTINF:-1 tvg-id="AgroCanal.br@SD" tvg-name="AgroCanal" tvg-logo="https://i.imgur.com/5XyopHf.png" tvg-country="BR" tvg-language="por" group-title="Education",AgroCanal
+http://45.162.64.114/AGRO_CANAL/index.m3u8
+#EXTINF:-1 tvg-id="AlAlamiya2.sd@SD" tvg-name="Al Alamiya 2" tvg-logo="https://i.imgur.com/5FrE3Nv.png" tvg-country="SD" tvg-language="ara" group-title="Education",Al Alamiya 2
+http://82.212.74.98:8000/live/7815.m3u8
+#EXTINF:-1 tvg-id="AlHiwarTV.uk@SD" tvg-name="Al Hiwar TV [Not 24/7]" tvg-logo="https://i.imgur.com/UjOxwdd.png" tvg-country="GB" tvg-language="ara" group-title="Education",Al Hiwar TV [Not 24/7]
+https://mn-nl.mncdn.com/alhiwar_live/smil:alhiwar.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="ARDalpha.de@SD" tvg-name="ARD-alpha" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/ARD_alpha.svg/960px-ARD_alpha.svg.png" tvg-country="DE" tvg-language="deu" group-title="Education",ARD-alpha
+https://mcdn.br.de/br/fs/ard_alpha/hls/de/master.m3u8
+#EXTINF:-1 tvg-id="30AWeLoveCars.us@SD" tvg-name="30A We Love Cars" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxroqfE_hvEApKMQx03sSYXPeEh4ClaF5QSa8XfRwJW_So3vfSN0CjqzxN30H-qEBswqU&usqp=CAU" tvg-country="US" tvg-language="eng" group-title="Auto",30A We Love Cars
+https://30a-tv.com/feeds/vidaa/cars.m3u8
+#EXTINF:-1 tvg-id="Avto24.ru@SD" tvg-name="Avto24" tvg-logo="https://i.imgur.com/GXSXmN2.png" tvg-country="RU" tvg-language="rus" group-title="Auto",Avto24
+http://stream.mcquack.net/78/index.m3u8
+#EXTINF:-1 tvg-id="Choppertown.us@SD" tvg-name="Choppertown" tvg-logo="https://i.imgur.com/U6cu5Ms.png" tvg-country="US" tvg-language="eng" group-title="Auto",Choppertown
+https://linear-11.frequency.stream/dist/glewedtv/11/hls/master/playlist.m3u8
+#EXTINF:-1 tvg-id="CityEdenAutoGid.ru@HD" tvg-name="City Eden AutoGid [Not 24/7]" tvg-logo="https://i.imgur.com/qpe8L27.png" tvg-country="RU" tvg-language="rus" group-title="Auto",City Eden AutoGid [Not 24/7]
+https://cityeden.catcast.tv/content/47515/index.m3u8
+#EXTINF:-1 tvg-id="30ARidiculousTV.us@SD" tvg-name="30A Ridiculous TV" tvg-logo="https://30a.media/wp-content/uploads/2023/08/pzaz-30atv-2-230x366-ridiculous.jpg" tvg-country="US" tvg-language="eng" group-title="Comedy",30A Ridiculous TV
+https://30a-tv.com/feeds/720p/63.m3u8
+#EXTINF:-1 tvg-id="AngerManagementChannel.us@SD" tvg-name="Anger Management Channel" tvg-logo="https://i.imgur.com/VXZgrNy.png" tvg-country="US" tvg-language="eng" group-title="Comedy",Anger Management Channel
+https://amg00353-lionsgatestudio-angermgmt-samsungau-o9jg9.amagi.tv/playlist/amg00353-lionsgatestudio-angermgmt-samsungau/playlist.m3u8
+#EXTINF:-1 tvg-id="DW.de" tvg-name="DW English" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Deutsche_Welle_symbol_2012.svg/512px-Deutsche_Welle_symbol_2012.svg.png" tvg-country="DE" tvg-language="eng" group-title="News",DW English
+https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
+#EXTINF:-1 tvg-id="DWDeutsch.de" tvg-name="DW Deutsch" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Deutsche_Welle_symbol_2012.svg/512px-Deutsche_Welle_symbol_2012.svg.png" tvg-country="DE" tvg-language="deu" group-title="News",DW Deutsch
+https://dwamdstream104.akamaized.net/hls/live/2015530/dwstream104/index.m3u8
+#EXTINF:-1 tvg-id="RedBullTV.at" tvg-name="Red Bull TV" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png" tvg-country="AT" tvg-language="eng" group-title="Sports",Red Bull TV
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8

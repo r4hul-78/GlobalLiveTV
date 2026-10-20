@@ -61,7 +61,7 @@ class StreamHealthChecker:
     geographic/ISP access controls.
     """
 
-    def __init__(self, timeout: int = 5, max_failures: int = 3):
+    def __init__(self, timeout: int = 3, max_failures: int = 3):
         self.timeout = timeout
         self.max_failures = max_failures
 
@@ -117,7 +117,7 @@ class StreamHealthChecker:
                 # Bounded probe of variant playlist (up to 32KB)
                 v_code, _, v_bytes, _, v_err = safe_http_get(
                     resolved_variant_url,
-                    timeout=self.timeout,
+                    timeout=min(self.timeout, 2),
                     max_bytes=32 * 1024
                 )
                 if v_code != 200:
@@ -276,7 +276,7 @@ class StreamHealthChecker:
         if not channels:
             return results
 
-        concurrency = max(1, min(concurrency, 15))  # Bound between 1 and 15 workers
+        concurrency = max(1, min(concurrency, 20))  # Bound between 1 and 20 workers
         channel_map = {ch.id: ch for ch in channels}
         probe_tasks = [(ch.id, ch.stream_url) for ch in channels]
 

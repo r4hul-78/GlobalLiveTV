@@ -1,15 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About and ethical principles of the Global Live TV Platform.">
+    <meta name="description" content="About and ethical principles of the Global Live TV Platform - Catalog coverage across 30+ countries, 17 genres, and 26 languages.">
+    <meta name="keywords" content="live tv ethics, free to air streaming, open source broadcast catalog, international tv directory">
+    <meta property="og:title" content="About & Ethics - Global Live TV Platform">
+    <meta property="og:description" content="Direct browser streaming of legal, free-to-air public broadcasts indexed by country, genre, and language.">
+    <meta property="og:type" content="article">
     <title>{{ title or "About & Ethics - Global Live TV Platform" }}</title>
     
+    <!-- Theme Bootstrap: Prevent Flash of Incorrect Theme -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem("gltv_theme");
+                var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+                document.documentElement.setAttribute("data-theme", theme);
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Application CSS (Direct file preview + Flask url_for) -->
     <link rel="stylesheet" href="../static/css/style.css">
@@ -21,7 +36,7 @@
         <div class="header-container">
             <a href="{{ url_for('main.index') if url_for is defined else 'index.html' }}" data-file-href="index.html" class="brand-link" id="brandLink">
                 <div class="brand-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
                         <polyline points="17 2 12 7 7 2"></polyline>
                     </svg>
@@ -34,43 +49,65 @@
 
             <nav class="main-nav" id="mainNav">
                 <a href="{{ url_for('main.index') if url_for is defined else 'index.html' }}" data-file-href="index.html" class="nav-link" id="navHome">Directory</a>
-                <a href="{{ url_for('main.about') if url_for is defined else 'about.html' }}" data-file-href="about.html" class="nav-link active" id="navAbout">Ethics & Sources</a>
+                <a href="{{ url_for('main.about') if url_for is defined else 'about.html' }}" data-file-href="about.html" class="nav-link active" id="navAbout">Ethics &amp; Sources</a>
                 <div class="health-pill" id="systemHealthBadge" title="Backend Status">
                     <span class="status-dot healthy"></span>
                     <span class="status-label">Operational</span>
                 </div>
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch to light theme" title="Toggle color theme">
+                    <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
             </nav>
         </div>
     </header>
 
     <main class="app-main" id="mainContent">
         <div class="page-container" id="aboutPage">
-            <div class="content-panel">
-                <h1>About Global Live TV Platform</h1>
-                <p class="lead-text">
+            <div class="state-panel" style="text-align: left; max-width: 800px; margin: 2rem auto;">
+                <h1 style="font-size: 1.6rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">About Global Live TV Platform</h1>
+                <p style="font-size: 1rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 2rem;">
                     This platform facilitates legitimate, open access to public broadcast streams across the globe.
                 </p>
 
-                <section class="section-block">
-                    <h2>Source Attribution</h2>
-                    <p>
+                <section style="margin-bottom: 2rem;">
+                    <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">Source Attribution</h2>
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6;">
                         Channel metadata is derived from the community project 
-                        <a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener noreferrer">iptv-org/iptv</a>.
+                        <a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: underline;">iptv-org/iptv</a>.
                         We do not own, create, host, or alter any stream content.
                     </p>
                 </section>
 
-                <section class="section-block">
-                    <h2>Ethical &amp; Legal Principles</h2>
-                    <ul class="principles-list">
-                        <li><strong>No Proxying:</strong> The backend never re-hosts or tunnels stream data. Playback occurs directly between your client browser and the designated broadcaster.</li>
-                        <li><strong>No DRM Bypassing:</strong> We do not circumvent any encryption, paywalls, geographic fencing, or authentication systems.</li>
-                        <li><strong>Honest Health Assessment:</strong> Channels are verified via non-invasive manifest probing to give users realistic expectations about availability.</li>
+                <section style="margin-bottom: 2rem;">
+                    <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">Ethical &amp; Legal Principles</h2>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
+                        <li style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; padding-left: 1rem; border-left: 2px solid var(--color-accent);">
+                            <strong style="color: var(--color-text);">No Proxying:</strong> The backend never re-hosts or tunnels stream data. Playback occurs directly between your client browser and the designated broadcaster.
+                        </li>
+                        <li style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; padding-left: 1rem; border-left: 2px solid var(--color-accent);">
+                            <strong style="color: var(--color-text);">No DRM Bypassing:</strong> We do not circumvent any encryption, paywalls, geographic fencing, or authentication systems.
+                        </li>
+                        <li style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; padding-left: 1rem; border-left: 2px solid var(--color-accent);">
+                            <strong style="color: var(--color-text);">Honest Health Assessment:</strong> Channels are verified via non-invasive manifest probing to give users realistic expectations about availability.
+                        </li>
                     </ul>
                 </section>
 
-                <div class="action-footer">
-                    <a href="{{ url_for('main.index') if url_for is defined else 'index.html' }}" data-file-href="index.html" class="btn btn-primary" id="btnBackToHome">Return to Directory</a>
+                <div style="margin-top: 2rem;">
+                    <a href="{{ url_for('main.index') if url_for is defined else 'index.html' }}" data-file-href="index.html" class="btn btn-primary btn-sm" id="btnBackToHome">Return to Directory</a>
                 </div>
             </div>
         </div>
@@ -95,6 +132,4 @@
     <!-- Application JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') if url_for is defined else '../static/js/main.js' }}?v=1.0.1"></script>
 </body>
-
-
 </html>

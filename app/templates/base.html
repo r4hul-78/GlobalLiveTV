@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Discover, search, filter, and watch legal, publicly available global live TV streams.">
     <title>{% block title %}Global Live TV Platform{% endblock %}</title>
     
+    <!-- Theme Bootstrap: Prevent Flash of Incorrect Theme -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem("gltv_theme");
+                var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+                document.documentElement.setAttribute("data-theme", theme);
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Application CSS (Direct file preview + Flask url_for) -->
+    <!-- Application CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -22,7 +33,7 @@
         <div class="header-container">
             <a href="{{ url_for('main.index') }}" class="brand-link" id="brandLink">
                 <div class="brand-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
                         <polyline points="17 2 12 7 7 2"></polyline>
                     </svg>
@@ -35,11 +46,27 @@
             
             <nav class="main-nav" id="mainNav">
                 <a href="{{ url_for('main.index') }}" class="nav-link active" id="navHome">Directory</a>
-                <a href="{{ url_for('main.about') }}" class="nav-link" id="navAbout">Ethics & Sources</a>
+                <a href="{{ url_for('main.about') }}" class="nav-link" id="navAbout">Ethics &amp; Sources</a>
                 <div class="health-pill" id="systemHealthBadge" title="Backend Status">
                     <span class="status-dot healthy"></span>
                     <span class="status-label">Operational</span>
                 </div>
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch to light theme" title="Toggle color theme">
+                    <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
             </nav>
         </div>
     </header>
@@ -59,7 +86,7 @@
             <div class="footer-meta">
                 <span class="badge-tag">Zero Proxy Architecture</span>
                 <span class="badge-tag">Open Metadata Source</span>
-                <span class="badge-tag">HLS Native & MSE</span>
+                <span class="badge-tag">HLS Native &amp; MSE</span>
             </div>
         </div>
     </footer>
@@ -69,5 +96,4 @@
     {% block extra_js %}{% endblock %}
 
 </body>
-
 </html>
