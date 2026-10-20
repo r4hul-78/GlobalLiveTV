@@ -55,4 +55,3 @@ The project aggregates channel metadata from the community-maintained [iptv-org/
 - **Frontend / Player**: Verified in Chrome browser (discovery, filters, player modal, issue dialog, clean console)
 - **Security**: SSRF protection, DNS rebinding mitigation, no media proxying, anonymous privacy-first issue reporting
 - **Documentation**: 15 required sections in README.md, comprehensive ARCHITECTURE.md, TESTING.md, DEBUG.md, DEVELOPMENT.md
-s

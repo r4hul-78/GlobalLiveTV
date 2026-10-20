@@ -29,6 +29,7 @@ The platform aggregates channel metadata from the community-maintained [iptv-org
 13. [Known Limitations](#13-known-limitations)
 14. [Source Attribution and Usage Considerations](#14-source-attribution-and-usage-considerations)
 15. [Channel-Reporting Procedures](#15-channel-reporting-procedures)
+16. [Supplementary Documentation](#16-supplementary-documentation)
 
 ---
 
@@ -568,6 +569,22 @@ To maintain high directory quality and respect broadcaster rights, the platform 
   ORDER BY r.created_at DESC;
   ```
 - If a channel is reported for copyright infringement or confirmed offline across multiple sources, set `is_active = 0` in the database to instantly hide it from public catalog listings.
+
+---
+
+## 16. Supplementary Documentation
+
+For developers, contributors, and AI agents, comprehensive architecture documentation, developer playbooks, and development prompt specifications are organized in the [`docs/`](docs/) directory:
+
+| Document | Description |
+|---|---|
+| [**Architecture & System Design**](docs/ARCHITECTURE.md) | Component architecture, data flow, SSRF safeguards, caching, and database schemas. |
+| [**Development Guide**](docs/DEVELOPMENT.md) | Local environment setup, dependency management, code conventions, and manual test workflows. |
+| [**Testing & Quality Assurance**](docs/TESTING.md) | Test suite organization, mock strategies, edge cases, and CI automation details. |
+| [**Debugging & Diagnostics**](docs/DEBUG.md) | Playbook for diagnosing stream playback failures, ingestion locks, and database integrity. |
+| [**Project Context & Roadmap**](docs/PROJECT_CONTEXT.md) | High-level roadmap, core principles, technology decisions, and milestone audits. |
+| [**Agent Operational Protocols**](docs/AGENT.md) | Guidelines, operating principles, and reporting standards for AI coding agents. |
+| [**Master Prompt Specification**](docs/global_live_tv_master_prompt.md) | Complete 9-step functional and technical requirements specification. |
 
 ---
 
